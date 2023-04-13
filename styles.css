@@ -69,6 +69,7 @@ textarea {
 
 .light-mode textarea {
   background-color: #DEDAD3;
+  color: #26746A;
 }
 
 button[type="submit"] {
