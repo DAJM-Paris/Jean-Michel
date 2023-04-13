@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     textareas.forEach((textarea) => {
       textarea.value = '';
     });
-  banner.hidden = true; // Ajoutez cette ligne pour cacher le bandeau
   });
 
   form.addEventListener('submit', (e) => {
