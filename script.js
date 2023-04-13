@@ -43,3 +43,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 function resetForm() {
   document.querySelector("form").reset();
+}
