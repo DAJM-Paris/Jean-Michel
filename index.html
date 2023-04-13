@@ -15,15 +15,17 @@
       <input type="checkbox" id="toggle-theme" checked>
       <span class="toggle-slider round"></span>
     </label>
+	  
   </header>
 
 <div class="container">
-  <h1>CRÉEZ, VALIDEZ ET COLLEZ LE PROMPT</h1>
+  <h1>CRÉEZ, VALIDEZ ET COLLER LE PROMPT</h1>
 	
   <form id="promptForm">
      <div class="buttons-container">
-    <button type="submit" id="validate-button">Copier le prompt</button>
+    <button type="submit" id="validate-button">Copié le prompt</button>
     <button id="reset-button" type="button">Réinitialiser</button>
+
   </div>
   <form>
    <div class="form-container">
@@ -63,8 +65,61 @@
     </div> 
 	  
 	<div class="input-group">
-      <label for="Ton">Ton</label>
-      <textarea id="Ton"></textarea>
+		<label for="tone">Ton</label>
+		  <select id="tone" name="tone">
+			<option value=""></option>
+			<option value="Académique">Académique</option>
+			<option value="Administratif">Administratif</option>
+			<option value="Ambivalent">Ambivalent</option>
+			<option value="Amusant">Amusant</option>
+			<option value="Apaisant">Apaisant</option>
+			<option value="Blog">Blog</option>
+			<option value="Colere">Colère</option>
+			<option value="Comique">Comique</option>
+			<option value="Contradictoire">Contradictoire</option>
+			<option value="Creatif">Créatif</option>
+			<option value="Cynique">Cynique</option>
+			<option value="Decontracte">Décontracté</option>
+			<option value="Dedaigneux">Dédaigneux</option>
+			<option value="Delibere">Délibéré</option>
+			<option value="Demoralisant">Démoralisant</option>
+			<option value="Educatif">Educatif</option>
+			<option value="Effrayant">Effrayant</option>
+			<option value="Emotif">Emotif</option>
+			<option value="Emotionnel">Émotionnel</option>
+			<option value="Enthousiaste">Enthousiaste</option>
+			<option value="Exaltant">Exaltant</option>
+			<option value="Factuel">Factuel</option>
+			<option value="Formel">Formel</option>
+			<option value="Humoristique">Humoristique</option>
+			<option value="Informatif">Informatif</option>
+			<option value="Informel">Informel</option>
+			<option value="Ironique">Ironique</option>
+			<option value="Journalistique">Journalistique</option>
+			<option value="Juridique">Juridique</option>
+			<option value="Litteraire">Littéraire</option>
+			<option value="Medical">Médical</option>
+			<option value="Marketing">Marketing</option>
+			<option value="Menaçant">Menaçant</option>
+			<option value="Narratif">Narratif</option>
+			<option value="Nostalgique">Nostalgique</option>
+			<option value="Optimiste">Optimiste</option>
+			<option value="Passionné">Passionné</option>
+			<option value="Pessimiste">Pessimiste</option>
+			<option value="Positif">Positif</option>
+			<option value="Professionnel">Professionnel</option>
+			<option value="Provocateur">Provocateur</option>
+			<option value="Publicitaire">Publicitaire</option>
+			<option value="Rassurant">Rassurant</option>
+			<option value="Sarcastique">Sarcastique</option>
+			<option value="Sérieux">Sérieux</option>
+			<option value="Solennel">Solennel</option>
+			<option value="Technique">Technique</option>
+			<option value="Triste">Triste</option>
+			  
+		 
+  <!-- Ajoutez les autres options ici -->
+		</select>
     </div>
 	
 	 <div class="input-group">
@@ -88,7 +143,7 @@
     </div> 
 	  
   	<div class="input-group">
-      <label for="Temperature">Température (0 pas d'originalité > 1 plus créatif)</label>
+      <label for="Temperature">Température</label>
       <textarea id="Temperature"></textarea>
     </div>
    </div>
