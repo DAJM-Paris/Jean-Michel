@@ -1,0 +1,220 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #10322E;
+  color: #F7F3EB;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+body.light-mode {
+  background-color: #F7F3EB;
+  color: #184A44;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  gap: 1rem;
+}
+
+#reset-button {
+  padding: 8px 16px;
+  background-color: #184A44;
+  color: #F7F3EB;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer; 
+  height: 32px;
+}
+
+#reset-button:hover {
+  background-color: #10322E;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-style: italic;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 50vw;
+}
+
+label {
+  display: block;
+  margin-bottom: 0;
+  text-align: left;
+  color: #26746A;
+}
+
+textarea {
+  display: block;
+  width: 320px;
+  padding: 0px;
+  box-sizing: border-box;
+  background-color: #26746A;
+  color: #F7F3EB;
+  border: none;
+  font-family: inherit;
+  resize: none;
+  font-size: 16px;
+  border-radius: 2px;
+  padding: 8px;
+}
+
+
+button[type="submit"] {
+  padding: 8px 32px;
+  background-color: #FFE047;
+  color: #184A44;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  height: 32px;
+}
+
+button[type="submit"]:hover {
+  background-color: #FFD732;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.banner {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px;
+  background-color: #48DDC9;
+  text-align: center;
+  border-radius: 4px;
+  z-index: 1000;
+  color: #10322E;
+
+}
+
+/* Bouton toggle */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: #48DDC9;
+}
+
+input:focus + .toggle-slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.toggle-slider.round {
+  border-radius: 34px;
+}
+
+.toggle-slider.round:before {
+  border-radius: 50%;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 84px;
+  height: 258px;
+  display: none;
+}
+
+.logo-light {
+  display: none;
+}
+
+.light-mode .logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: block;
+}
+
+.light-mode .logo-dark {
+  display: none;
+}
+
+/* Ajoutez ou modifiez ces styles */
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* Pour les éléments qui doivent occuper la largeur complète, ajoutez une classe 'full-width' */
+.form-item.full-width {
+  grid-column: span 2;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+

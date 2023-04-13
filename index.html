@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Prompt Chat GPT</title>
+</head>
+
+<body>
+  <header>
+    <img src="https://dajm.fr/images/DAJM-DARK.svg" alt="Logo light" class="logo logo-light">
+    <img src="https://dajm.fr/images/DAJM-LIGHT.svg" alt="Logo dark" class="logo logo-dark">
+    <label class="toggle-switch" for="toggle-theme">
+      <input type="checkbox" id="toggle-theme" checked>
+      <span class="toggle-slider round"></span>
+    </label>
+  </header>
+
+<div class="container">
+  <h1>CRÉEZ, VALIDEZ ET COLLER LE PROMPT</h1>
+	
+  <form id="promptForm">
+     <div class="buttons-container">
+    <button type="submit" id="validate-button">Copié le prompt</button>
+    <button id="reset-button">Réinitialiser</button>
+  </div>
+  <form>
+   <div class="form-container">
+	<div class="input-group">
+      <label for="role">Ton rôle</label>
+      <textarea id="role"></textarea>
+    </div>
+	  
+    <div class="input-group">
+      <label for="production">Production attendue</label>
+      <textarea id="production"></textarea>
+    </div>
+	  
+    <div class="input-group">
+      <label for="context">Contexte</label>
+      <textarea id="context"></textarea>
+    </div>
+	  
+	<div class="input-group">
+      <label for="mission">La mission</label>
+      <textarea id="mission"></textarea>
+    </div>
+	  
+	<div class="input-group">
+      <label for="Sujet">Sujet de l'article</label>
+      <textarea id="Sujet"></textarea>
+    </div>
+	  
+	<div class="input-group">
+      <label for="But">But de l'article</label>
+      <textarea id="But"></textarea>
+    </div>
+	  
+	<div class="input-group">
+      <label for="cible">Public cible</label>
+      <textarea id="cible"></textarea>
+    </div> 
+	  
+	<div class="input-group">
+      <label for="Ton">Ton</label>
+      <textarea id="Ton"></textarea>
+    </div>
+	
+	 <div class="input-group">
+      <label for="Style">Style</label>
+      <textarea id="Style"></textarea>
+    </div>
+	  
+	<div class="input-group">
+      <label for="Longueur">Longueur de l’article</label>
+      <textarea id="Longueur"></textarea>
+    </div>
+	  
+	<div class="input-group">
+      <label for="Contraintes">Contraintes et restrictions</label>
+      <textarea id="Contraintes"></textarea>
+    </div>
+	  
+	<div class="input-group">
+      <label for="Suggestions">Suggestions ou exigences</label>
+      <textarea id="Suggestions"></textarea>
+    </div> 
+	  
+  	<div class="input-group">
+      <label for="Temperature">Température</label>
+      <textarea id="Temperature"></textarea>
+    </div>
+   </div>
+	 
+    <!-- Ajoutez vos autres champs de formulaire ici -->
+    <!-- ... -->
+ 
+
+  </form>
+	  
+
+  <div class="banner" hidden>J'ai bien copié le prompt dans le presse-papier.</div>
+  
+  <script src="script.js"></script>
+	     <script>
+    function autoResizeTextArea() {
+      this.style.height = 'auto';
+      this.style.height = (this.scrollHeight) + 'px';
+    }
+
+    document.querySelectorAll('textarea').forEach((textarea) => {
+      textarea.addEventListener('input', autoResizeTextArea);
+      autoResizeTextArea.call(textarea);
+    });
+  </script>
+</body>
+</html>
