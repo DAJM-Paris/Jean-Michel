@@ -9,21 +9,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   resetButton.addEventListener('click', () => {
-    const textareas = document.querySelectorAll('textarea');
-    textareas.forEach((textarea) => {
-      textarea.value = '';
-    });
+    resetForm();
   });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     let promptText = '';
-    const inputs = document.querySelectorAll('textarea');
+    const textareas = document.querySelectorAll('textarea');
+    const selects = document.querySelectorAll('select');
 
-    inputs.forEach((input) => {
-      const label = document.querySelector(`label[for='${input.id}']`).textContent;
-      const value = input.value;
+    textareas.forEach((textarea) => {
+      const label = document.querySelector(`label[for='${textarea.id}']`).textContent;
+      const value = textarea.value;
+
+      if (value.trim() !== '') {
+        promptText += `${label}: ${value}\n`;
+      }
+    });
+
+    selects.forEach((select) => {
+      const label = document.querySelector(`label[for='${select.id}']`).textContent;
+      const value = select.value;
 
       if (value.trim() !== '') {
         promptText += `${label}: ${value}\n`;
@@ -41,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 function resetForm() {
   document.querySelector("form").reset();
 }
