@@ -1,54 +1,365 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleTheme = document.getElementById('toggle-theme');
-  const resetButton = document.getElementById('reset-button');
-  const form = document.querySelector('form');
-  const banner = document.querySelector('.banner');
-
-  toggleTheme.addEventListener('change', () => {
-    document.body.classList.toggle('light-mode');
-  });
-
-  resetButton.addEventListener('click', () => {
-    resetForm();
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    let promptText = '';
-    const textareas = document.querySelectorAll('textarea');
-    const selects = document.querySelectorAll('select');
-
-    textareas.forEach((textarea) => {
-      const label = document.querySelector(`label[for='${textarea.id}']`).textContent;
-      const value = textarea.value;
-
-      if (value.trim() !== '') {
-        promptText += `${label}: ${value}\n`;
-      }
-    });
-
-    selects.forEach((select) => {
-      const label = document.querySelector(`label[for='${select.id}']`).textContent;
-      const value = select.value;
-
-      if (value.trim() !== '') {
-        promptText += `${label}: ${value}\n`;
-      }
-    });
-
-    // Copier le texte dans le presse-papier
-    navigator.clipboard.writeText(promptText).then(() => {
-      banner.hidden = false;
-      setTimeout(() => {
-        banner.hidden = true;
-      }, 3000);
-    }, (err) => {
-      console.error('Erreur lors de la copie dans le presse-papier:', err);
-    });
-  });
-});
-
-function resetForm() {
-  document.querySelector("form").reset();
+body {
+  font-family: Arial, sans-serif;
+  background-color: #10322E;
+  color: #F7F3EB;
+  transition: background-color 0.5s, color 0.5s;
 }
+
+body.light-mode {
+  background-color: #F7F3EB;
+  color: #184A44;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  gap: 1rem;
+}
+
+#reset-button {
+  padding: 8px 8px;
+  background-color: #184A44;
+  color: #F7F3EB;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer; 
+  height: 32px;
+}
+
+#reset-button:hover {
+  background-color: #10322E;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-style: italic;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 50vw;
+}
+
+label {
+  display: block;
+  margin-bottom: 0;
+  text-align: left;
+  color: #26746A;
+}
+
+textarea {
+  display: block;
+  width: 320px;
+  padding: 0px;
+  box-sizing: border-box;
+  background-color: #26746A;
+  color: #F7F3EB;
+  border: none;
+  font-family: inherit;
+  resize: none;
+  font-size: 16px;
+  border-radius: 2px;
+  padding: 8px;
+}
+
+.light-mode textarea {
+  background-color: #DEDAD3;
+	color: #26746A;
+}
+
+button[type="submit"] {
+  padding: 8px 16px;
+  background-color: #FFE047;
+  color: #184A44;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  height: 32px;
+}
+
+button[type="submit"]:hover {
+  background-color: #FFD732;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.banner {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px;
+  background-color: #48DDC9;
+  text-align: center;
+  border-radius: 4px;
+  z-index: 1000;
+  color: #10322E;
+
+}
+
+/* Bouton toggle */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: #48DDC9;
+}
+
+input:focus + .toggle-slider {
+  box-shadow: 0 0 1px #48DDC9;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.toggle-slider.round {
+  border-radius: 34px;
+}
+
+.toggle-slider.round:before {
+  border-radius: 50%;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 84px;
+  height: 258px;
+  display: none;
+}
+
+.logo-light {
+  display: none;
+}
+
+.light-mode .logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: block;
+}
+
+.light-mode .logo-dark {
+  display: none;
+}
+
+/* Ajoutez ou modifiez ces styles */
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* Pour les éléments qui doivent occuper la largeur complète, ajoutez une classe 'full-width' */
+.form-item.full-width {
+  grid-column: span 2;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: Left;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+/* Ajoutez ces styles pour les menus déroulants */
+input[list] {
+  background-color: #26746A;
+  color: #1E5D54;
+  border-radius: 2px;
+	height: 48px;
+	border: hidden;
+}
+.light-mode input[list] {
+  background-color: rgba(30, 93, 84, 0.7);
+  color: #F7F3EB;
+}
+
+datalist {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+
+option {
+  padding: 16px;
+  background-color: rgba(222, 218, 211, 0.7);
+  color: #1E5D54;
+}
+.light-mode option {
+  background-color: rgba(30, 93, 84, 0.7);
+  color: #F7F3EB;
+}
+
+input[list]::-webkit-calendar-picker-indicator {
+  background-color: transparent;
+  color: #FFF;
+}
+.light-mode input[list]::-webkit-calendar-picker-indicator {
+  color: #000;
+}
+
+
+/* Ajoutez un filtre pour le flou d'arrière-plan */
+input[list]::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  filter: blur(12px);
+}
+
+select {
+  background-color: #26746A;
+  color: #F7F3EB;
+  border-radius: 2px;
+	border: hidden;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%23FFF"><path d="M7 10l5 5 5-5H7z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 1.5rem;
+	font-size: 16px;
+  padding-left: 16px;
+	height: 48px;
+}
+.light-mode select {
+  background-color: #DEDAD3;
+  color: #1E5D54;
+	font-size: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%23000"><path d="M7 10l5 5 5-5H7z"/></svg>');
+}
+
+/* Style des options */
+option {
+  padding: 16px;
+  background-color: rgba(222, 218, 211, 0.7);
+  color: #1E5D54;
+}
+.light-mode option {
+  background-color: rgba(30, 93, 84, 0.7);
+  color: #F7F3EB;
+}
+
+.mobile-logo {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    justify-content: center;
+  }
+
+  .desktop-logo {
+    display: none;
+  }
+
+  .mobile-logo {
+    display: inline;
+    width: 60px;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 32px;
+    max-width: 200px;
+  }
+
+  form {
+    max-width: 100%;
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: 14px;
+  }
+
+  .form-container {
+    grid-template-columns: 1fr;
+	      width: 300px;
+  }
+
+  textarea {
+    width: 300px; /* Change this value to 70% to make the textarea 70% of the device width */
+  }
+ select {
+    width: 300px;
+  }
+}
+
+
+  /* Add the following rule to make the form 70% of the device width */
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Add a rule for the 'Copié' button font size */
+  button[type="submit"] {
+    font-size: 12px; /* Set the font size to 12px */
+	  width: 150px;
+  }
+}
+
