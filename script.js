@@ -12,30 +12,34 @@ document.addEventListener('DOMContentLoaded', () => {
     resetForm();
   });
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-    let promptText = '';
-    const textareas = document.querySelectorAll('textarea');
-    const selects = document.querySelectorAll('select');
+  let promptText = '';
+  const textareas = document.querySelectorAll('textarea');
+  const selects = document.querySelectorAll('select');
 
-    textareas.forEach((textarea) => {
-      const label = document.querySelector(`label[for='${textarea.id}']`).textContent;
-      const value = textarea.value;
+  textareas.forEach((textarea) => {
+    const label = document.querySelector(`label[for='${textarea.id}']`).textContent;
+    const value = textarea.value;
 
-      if (value.trim() !== '') {
-        promptText += `${label}: ${value}\n`;
-      }
-    });
+    if (value.trim() !== '') {
+      promptText += `${label}: ${value}\n`;
+    }
+  });
 
-    selects.forEach((select) => {
-      const label = document.querySelector(`label[for='${select.id}']`).textContent;
-      const value = select.value;
+  selects.forEach((select) => {
+    const label = document.querySelector(`label[for='${select.id}']`).textContent;
+    const value = select.value;
 
-      if (value.trim() !== '') {
-        promptText += `${label}: ${value}\n`;
-      }
-    });
+    if (value.trim() !== '') {
+      promptText += `${label}: ${value}\n`;
+    }
+  });
+
+  // Ajouter la phrase "Obligation: Pose-moi toutes les questions nécessaires à l'accomplissement de ta mission."
+  promptText += "Obligation: Pose-moi toutes les questions nécessaires à l'accomplissement de ta mission.";
+
 
     // Copier le texte dans le presse-papier
     navigator.clipboard.writeText(promptText).then(() => {
@@ -52,3 +56,5 @@ document.addEventListener('DOMContentLoaded', () => {
 function resetForm() {
   document.querySelector("form").reset();
 }
+
+
